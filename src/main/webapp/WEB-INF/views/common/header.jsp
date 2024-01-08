@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="nav-header">
-		<a href="#" class="navi">1</a>
+		<a href="/football/stadiumRG" class="navi">구장등록</a>
 		<a href="#" class="navi">2</a>
 		<a href="#" class="navi">3</a>
 	</div>
