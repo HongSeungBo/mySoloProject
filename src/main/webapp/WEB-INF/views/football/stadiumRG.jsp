@@ -11,7 +11,7 @@
 
 	<form action="/football/stadiumRG" method="post" enctype="multipart/form-data">
 		<div class="img-con">
-			<div class="img-box"></div>
+			<div id="imgBox"></div>
 			<input type="file" name="fFile" id="fFile" style="display: none;">
 			<button type="button" id="FIregBtn">첨부파일</button>
 		</div>

@@ -15,4 +15,5 @@ public class TmtFileVO {
 	private String uuid;
 	private String saveDir;
 	private String fileName;
+	private String regAt;
 }

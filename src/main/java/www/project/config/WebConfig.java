@@ -53,7 +53,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 		
-		String uploadLocation = "D:\\file\\_java\\fileupload";
+		String uploadLocation = "D:\\file\\java\\fileupload";
 		int maxFileSize = 1024*1024*20;
 		int maxReqSize = maxFileSize*2;
 		int fileSizeThreshold = maxFileSize;

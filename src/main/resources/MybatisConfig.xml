@@ -7,6 +7,7 @@
   		<setting name="mapUnderscoreToCamelCase" value="true"/>
   	</settings>
   	<typeAliases>
-  		
+  		<typeAlias type="www.project.domain.FootballVO" alias="fbvo"/>
+  		<typeAlias type="www.project.domain.TmtFileVO" alias="tfvo"/>
   	</typeAliases>
   </configuration>
