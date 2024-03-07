@@ -3,5 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="www.project.repository.FootballDAO">
-	
+	<insert id="register">
+		insert into football_stadium (f_code, user_name, stadium_name, city, districe, available_open, available_close, total_stadium_num, description)
+		values (#{fcode}, #{userName}, #{stadiumName}, #{city}, #{districe}, #{availableOpen}, #{availableClose}, #{totalStadiumNum}, #{description})
+	</insert>
+	<select id="getFootballList" resultType="fbvo">
+  		select * from football_stadium
+  	</select>
+  	<select id="getSelectOneDetailStadium" resultType="fbvo">
+  		select * from football_stadium where f_code = #{fcode}
+  	</select>
 	</mapper>

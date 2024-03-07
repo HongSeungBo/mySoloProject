@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="www.project.repository.FootballStadiumFileDAO">
+  <insert id="register">
+  	insert into stadium_file (f_code, uuid, file_name, save_dir)
+	values (#{fcode}, #{uuid}, #{fileName}, #{saveDir})
+  </insert>
+  <select id="getSelectFileOneFcode" resultType="fbsfvo">
+  	select * from stadium_file where f_code = #{fcode}
+  </select>
+  <select id="getSelectOneDetailStadiumFile" resultType="fbsfvo">
+  	select * from stadium_file where f_code = #{fcode}
+  </select>
+  </mapper>

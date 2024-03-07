@@ -9,7 +9,7 @@
 <body>
 	<div class="nav-header">
 		<a href="/football/stadiumRG" class="navi">구장등록</a>
-		<a href="#" class="navi">2</a>
+		<a href="/stadium/AllStadium" class="navi">구장보기</a>
 		<a href="#" class="navi">3</a>
 	</div>
 </body>
