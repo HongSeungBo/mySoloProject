@@ -1,5 +1,5 @@
-document.getElementById('FIregBtn').addEventListener('click', function(){
-    document.getElementById('fFile').click();
+document.getElementById('FIDregBtn').addEventListener('click', function(){
+    document.getElementById('fDetailFile').click();
 })
 
 const regExp = new RegExp("\.(exe|sh|bat|js|msi|dll)$");
@@ -21,9 +21,9 @@ function fileValidation(fileName, fileSize){
     }
 }
 
-document.getElementById('fFile').addEventListener('change',function(){
-    let div = document.getElementById('imgBox');
-    let file = document.getElementById('fFile').files;
+document.getElementById('fDetailFile').addEventListener('change',function(){
+    let div = document.getElementById('imageBox');
+    let file = document.getElementById('fDetailFile').files;
     let isOk = 1;
     isOk = fileValidation(file[0].name, file[0].size);
     const Data = file[0];
@@ -32,7 +32,7 @@ document.getElementById('fFile').addEventListener('change',function(){
             if(result!=null){
                 console.log(result);
                 console.log(result.uuid);
-                let img = `<img src="/upload/${result.saveDir}/${result.uuid}_${result.fileName}" alt="${result.fileName}">`;
+                let img = `<img src="/upload/${result.saveDir}/${result.uuid}_${result.fileName}" alt="${result.fileName}" data-uuid="${result.uuid}" data-fileNmae="${result.fileName}" data-saveDir="${result.saveDir}">`;
                 console.log(img);
                 div.innerHTML=img;
             }
@@ -57,3 +57,10 @@ async function tmtFile(Data){
         console.error();
     }
 }
+
+
+document.getElementById('AddST').addEventListener('click',function(){
+    console.log("ㅎㅇㅎㅇㅎㅇ버튼클릭 성공");
+    let ul = document.getElementById('AddSTZone');
+
+})

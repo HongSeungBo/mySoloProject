@@ -42,12 +42,6 @@
 		<div class="info">
 			<span>유저아이디</span><input type="text" name="userName">
 		</div>
-		<!-- <div class="stadium-info">
-			<div class="info">
-				<div class="stadium-img"></div>
-				<input type="text" name="">
-			</div>
-		</div> -->
 		<div class="button-con">
 			<button type="submit">등록</button>
 			<a href="/"><button type="button">취소</button></a>
