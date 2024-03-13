@@ -15,17 +15,17 @@
 		<c:forEach var="list" items="${list }">
 			<div>
 				<div>
-					<img src="/upload/${fn: replace(list.fbsfvo.saveDir, '\\', '/')}/${list.fbsfvo.uuid}_th_${list.fbsfvo.fileName}" alt="${list.fbsfvo.fileName}">
+					<img src="/upload/${fn: replace(list.fsfvo.saveDir, '\\', '/')}/${list.fsfvo.uuid}_th_${list.fsfvo.fileName}" alt="${list.fsfvo.fileName}">
 				</div>
 				<div>
 					<%-- <input type="text" value="${list.fbvo.fcode }" readonly="readonly"> --%>
 					<div>
-							<p><a href="/football/detailStadium?fcode=${list.fbvo.fcode }">${list.fbvo.stadiumName }</a></p>
-							<p><a href="/football/detailStadium?fcode=${list.fbvo.fcode }">${list.fbvo.city }</a></p>
-							<p><a href="/football/detailStadium?fcode=${list.fbvo.fcode }">${list.fbvo.availableOpen }</a></p>
-							<p><a href="/football/detailStadium?fcode=${list.fbvo.fcode }">${list.fbvo.availableClose }</a></p>
-							<p><a href="/football/detailStadium?fcode=${list.fbvo.fcode }">${list.fbvo.totalStadiumNum }</a></p>
-							<p>${list.fbvo.description }</p>
+							<p><a href="/football/detailStadium?fcode=${list.fvo.fcode }">${list.fvo.stadiumName }</a></p>
+							<p><a href="/football/detailStadium?fcode=${list.fvo.fcode }">${list.fvo.city }</a></p>
+							<p><a href="/football/detailStadium?fcode=${list.fvo.fcode }">${list.fvo.availableOpen }</a></p>
+							<p><a href="/football/detailStadium?fcode=${list.fvo.fcode }">${list.fvo.availableClose }</a></p>
+							<p><a href="/football/detailStadium?fcode=${list.fvo.fcode }">${list.fvo.totalStadiumNum }</a></p>
+							<p>${list.fvo.description }</p>
 					</div>
 				</div>
 			</div>

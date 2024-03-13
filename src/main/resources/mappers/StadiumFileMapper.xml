@@ -7,10 +7,10 @@
   	insert into stadium_file (f_code, uuid, file_name, save_dir)
 	values (#{fcode}, #{uuid}, #{fileName}, #{saveDir})
   </insert>
-  <select id="getSelectFileOneFcode" resultType="fbsfvo">
+  <select id="getSelectFileOneFcode" resultType="fsfvo">
   	select * from stadium_file where f_code = #{fcode}
   </select>
-  <select id="getSelectOneDetailStadiumFile" resultType="fbsfvo">
+  <select id="getSelectOneDetailStadiumFile" resultType="fsfvo">
   	select * from stadium_file where f_code = #{fcode}
   </select>
   </mapper>

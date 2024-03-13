@@ -1,5 +1,40 @@
-document.getElementById('FIDregBtn').addEventListener('click', function(){
-    document.getElementById('fDetailFile').click();
+document.addEventListener('click', function(e){
+    if(e.target.id=='AddST'){
+        let hiddenBox = document.getElementById('hiddenBox');
+        hiddenBox.style.display='block';
+    }
+    else if(e.target.id=='FDIregBtn'){
+        document.getElementById('fDetailFile').click();
+    }
+    else if(e.target.id=='addBtn'){
+        let hiddenBox = document.getElementById('hiddenBox');
+
+        let Data = new FormData();
+
+        let fileData = document.getElementById('fDetailFile');
+        let file = fileData.files[0];
+        Data.append('fFile', file);
+
+
+
+        let fcode = document.getElementById('fcode').value;
+        let stadiumDetailName = document.getElementById('stadiumDetailName').value;
+        let stadiumSize = document.getElementById('stadiumSize').value;
+        Data.append('fcode', fcode);
+        Data.append('stadiumDetailName', stadiumDetailName);
+        Data.append('stadiumSize', stadiumSize);
+
+        AddDetailStadium(Data).then(result=>{
+            if(result>0){
+                window.location.reload();
+                // hiddenBox.style.display='none';
+            }
+        })
+    }
+    else if(e.target.id=='cancelBtn'){
+        let hiddenBox = document.getElementById('hiddenBox');
+        hiddenBox.style.display='none';
+    }
 })
 
 const regExp = new RegExp("\.(exe|sh|bat|js|msi|dll)$");
@@ -57,10 +92,18 @@ async function tmtFile(Data){
         console.error();
     }
 }
-
-
-document.getElementById('AddST').addEventListener('click',function(){
-    console.log("ㅎㅇㅎㅇㅎㅇ버튼클릭 성공");
-    let ul = document.getElementById('AddSTZone');
-
-})
+async function AddDetailStadium(Data){
+    try {
+        const url = "/football/AddDetailStadium";
+        const config = {
+            method: "post",
+            body: Data
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+        console.error();
+    }
+}

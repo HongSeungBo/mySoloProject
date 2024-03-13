@@ -8,10 +8,14 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 @AllArgsConstructor
-@NoArgsConstructor
-public class FootballDTO {
-	private FootballVO fvo;
-	private FootballStadiumFileVO fsfvo;
+public class FootballStadiumDetailFileVO {
+	private String fcode;
+	private String stadiumDetailName;
+	private String uuid;
+	private String saveDir;
+	private String fileName;
+	private String regAt;
 }

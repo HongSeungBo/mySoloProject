@@ -32,7 +32,7 @@ reg_at datetime default now(),
 primary key(uuid));
 
 ---풋볼구장 이미지---
-create table stadium_file(
+create table tadium_file(
 f_code varchar(100),
 uuid varchar(200),
 save_dir varchar(100),
@@ -41,9 +41,20 @@ reg_at datetime default now(),
 mod_at datetime,
 primary key(uuid));
 
----풋볼구장 상세정보---
-create table stadium_detail(
+---풋볼 상세구장 이미지---
+create table football_stadium_detail_file(
 f_code varchar(100) not null,
 stadium_detail_name varchar(100) not null,
-size varchar(100) not null,
+uuid varchar(200),
+save_dir varchar(100),
+file_name varchar(100),
+reg_at datetime default now(),
+primary key(uuid));
+
+---풋볼구장 상세정보---
+create table football_stadium_detail(
+f_code varchar(100) not null,
+stadium_detail_name varchar(100) not null,
+stadium_size varchar(100) not null,
 reg_at datetime default now());
+

@@ -7,10 +7,10 @@
 		insert into football_stadium (f_code, user_name, stadium_name, city, districe, available_open, available_close, total_stadium_num, description)
 		values (#{fcode}, #{userName}, #{stadiumName}, #{city}, #{districe}, #{availableOpen}, #{availableClose}, #{totalStadiumNum}, #{description})
 	</insert>
-	<select id="getFootballList" resultType="fbvo">
+	<select id="getFootballList" resultType="fvo">
   		select * from football_stadium
   	</select>
-  	<select id="getSelectOneDetailStadium" resultType="fbvo">
+  	<select id="getSelectOneDetailStadium" resultType="fvo">
   		select * from football_stadium where f_code = #{fcode}
   	</select>
 	</mapper>

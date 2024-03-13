@@ -19,8 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.extern.slf4j.Slf4j;
 import www.project.domain.TmtFileVO;
 import www.project.domain.football.FootballDTO;
+import www.project.domain.football.FootballDetailDTO;
+import www.project.domain.football.FootballStadiumDetailFileVO;
+import www.project.domain.football.FootballStadiumDetailVO;
 import www.project.domain.football.FootballStadiumFileVO;
 import www.project.domain.football.FootballVO;
+import www.project.handler.FootballDetailStadiumFileHandler;
 import www.project.handler.StadiumFootballFileHandler;
 import www.project.handler.TmtFileHandler;
 import www.project.service.FootballService;
@@ -38,6 +42,9 @@ public class FootballController {
 	private StadiumFootballFileHandler sfh;
 	
 	@Inject
+	private FootballDetailStadiumFileHandler sdfh;
+	
+	@Inject
 	private TmtFileHandler tfh;
 	
 	@Inject
@@ -49,10 +56,10 @@ public class FootballController {
 	@PostMapping("/stadiumRG")
 	public String register(FootballVO fbvo, @RequestParam(name="fFile")MultipartFile file) {
 		FootballDTO fdto = new FootballDTO();
-		fdto.setFbvo(fbvo);
+		fdto.setFvo(fbvo);
 		if(file.getSize()>0) {
 			FootballStadiumFileVO sfvo = sfh.sfvo(file);
-			fdto.setFbsfvo(sfvo);
+			fdto.setFsfvo(sfvo);
 		}
 		int isOk = fbsv.registerStadium(fdto);
 		return "index";
@@ -60,17 +67,18 @@ public class FootballController {
 	
 	@GetMapping("/detailStadium")
 	public String detailStadium(Model m, @RequestParam("fcode")String fcode){
-		log.info("fcode >>>> " + fcode);
 		FootballDTO fdto = new FootballDTO();
-		fdto.setFbvo(fbsv.getSelectOneDetailStadium(fcode));
-		fdto.setFbsfvo(fbsv.getSelectOneDetailStadiumFile(fcode));
+		fdto.setFvo(fbsv.getSelectOneDetailStadium(fcode));
+		fdto.setFsfvo(fbsv.getSelectOneDetailStadiumFile(fcode));
 		m.addAttribute("fdto", fdto);
+		
+		List<FootballDetailDTO> list = fbsv.getSelectListDetail(fcode);
+		m.addAttribute("list", list);
 		return "/football/detailStadium";
 	}
 	
 	@PostMapping(value = "/tmtfile", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TmtFileVO> tmtfile(@RequestParam(name="file")MultipartFile file){
-		log.info("file >>> " + file);
 		TmtFileVO tfvo = tfh.tfvo(file);
 		int isOk = tfsv.saveInfo(tfvo);
 		if(isOk>0) {
@@ -78,5 +86,17 @@ public class FootballController {
 		}else {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@PostMapping(value = "/AddDetailStadium", produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> AddDetailStadium(@RequestParam(name="fFile")MultipartFile file, FootballStadiumDetailVO fsdvo){
+		FootballDetailDTO fddto = new FootballDetailDTO();
+		fddto.setFsdvo(fsdvo);
+		FootballStadiumDetailFileVO fsdfvo = sdfh.fsdfvo(file);
+		fsdfvo.setFcode(fsdvo.getFcode());
+		fsdfvo.setStadiumDetailName(fsdvo.getStadiumDetailName());
+		fddto.setFsdfvo(fsdfvo);
+		int isOk = fbsv.registerDetailStadium(fddto);
+		return isOk>0? new ResponseEntity<String>("1",HttpStatus.OK) : new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

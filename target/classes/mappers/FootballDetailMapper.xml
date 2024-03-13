@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="www.project.repository.FootballStadiumDetailDAO">
+  	<insert id="registerDetailInfo">
+  		insert into football_stadium_detail (f_code, stadium_detail_name, stadium_size)
+  		values (#{fcode}, #{stadiumDetailName}, #{stadiumSize})
+  	</insert>
+  	<select id="getSelectListDetail" resultType="fsdvo">
+  		select * from football_stadium_detail where f_code = #{fcode}
+  	</select>
+  </mapper>

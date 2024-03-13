@@ -7,8 +7,10 @@
   		<setting name="mapUnderscoreToCamelCase" value="true"/>
   	</settings>
   	<typeAliases>
-  		<typeAlias type="www.project.domain.football.FootballVO" alias="fbvo"/>
-  		<typeAlias type="www.project.domain.football.FootballStadiumFileVO" alias="fbsfvo"/>
+  		<typeAlias type="www.project.domain.football.FootballVO" alias="fvo"/>
+  		<typeAlias type="www.project.domain.football.FootballStadiumFileVO" alias="fsfvo"/>
   		<typeAlias type="www.project.domain.TmtFileVO" alias="tfvo"/>
+  		<typeAlias type="www.project.domain.football.FootballStadiumDetailVO" alias="fsdvo"/>
+  		<typeAlias type="www.project.domain.football.FootballStadiumDetailFileVO" alias="fsdfvo"/>
   	</typeAliases>
   </configuration>

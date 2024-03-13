@@ -34,10 +34,10 @@ public class StadiumServiceImpl implements StadiumService{
 		List<FootballVO> fblist = fbdao.getFootballList();
 		for(int i=0; i<fblist.size(); i++) {
 			FootballDTO dto = new FootballDTO();
-			dto.setFbvo(fblist.get(i));
+			dto.setFvo(fblist.get(i));
 			String fCode = fblist.get(i).getFcode();
 			FootballStadiumFileVO fbsfvo = sfdao.getSelectFileOneFcode(fCode);
-			dto.setFbsfvo(fbsfvo);
+			dto.setFsfvo(fbsfvo);
 			 list.add(dto);
 		}
 		return list;
