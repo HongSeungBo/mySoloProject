@@ -99,4 +99,9 @@ public class FootballController {
 		int isOk = fbsv.registerDetailStadium(fddto);
 		return isOk>0? new ResponseEntity<String>("1",HttpStatus.OK) : new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	@PostMapping(value = "/UpdateDetail", produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> UpdateDetail(){
+		return null;
+	}
 }

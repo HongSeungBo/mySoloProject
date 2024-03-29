@@ -51,13 +51,29 @@
 	</div>
 	<ul id="AddSTZone">
 		<c:forEach var="list" items="${list }">
-			<li>
+			<li class="stadium-detail">
 				<div>
 					<img src="/upload/${fn: replace(list.fsdfvo.saveDir, '\\', '/')}/${list.fsdfvo.uuid}_th_${list.fsdfvo.fileName}" alt="${list.fsdfvo.fileName}">
 				</div>
 				<div>
-					<div>구장이름 : ${list.fsdvo.stadiumDetailName }</div>
-					<div>구장크기 : ${list.fsdvo.stadiumSize }</div>
+					<div>
+						<span>구장이름</span><input type="text" value="${list.fsdvo.stadiumDetailName }" readonly="readonly">
+						<span>구장크기</span><input type="text" value="${list.fsdvo.stadiumSize }" readonly="readonly">
+						<select name="">
+							<option>시간선택</option>
+							<option value="09 ~ 11">09 ~ 11</option>
+							<option value="11 ~ 13">11 ~ 13</option>
+							<option value="13 ~ 15">13 ~ 15</option>
+							<option value="15 ~ 17">15 ~ 17</option>
+							<option value="17 ~ 19">17 ~ 19</option>
+							<option value="19 ~ 21">19 ~ 21</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					<button type="button" data-fcode="${fdto.fvo.fcode }" data-stadiumdetailname="${list.fsdvo.stadiumDetailName }" data-num="1" class="Reser-Btn">예약</button>
+					<button type="button" data-fcode="${fdto.fvo.fcode }" data-stadiumdetailname="${list.fsdvo.stadiumDetailName }" data-stadiumsize="${list.fsdvo.stadiumSize }" data-num="2" class="Update-Btn">수정</button>
+					<button type="button" data-fcode="${fdto.fvo.fcode }" data-stadiumdetailname="${list.fsdvo.stadiumDetailName }" data-num="3" class="Delete-Btn">삭제</button>
 				</div>
 			</li>
 		</c:forEach>
@@ -68,7 +84,13 @@
 			
 		</c:otherwise> --%>
 	</ul>
+	<div id="changeInfo" style="display: none;">
+	</div>
+<script type="text/javascript">
+let fcodeVal = `<c:out value="${fdto.fvo.fcode}" />`;
+</script>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript"	 src="/resources/js/football/AddStadiumDetail.js"></script>
+<script type="text/javascript"	 src="/resources/js/football/DetailBtnEvent.js"></script>
 </html>

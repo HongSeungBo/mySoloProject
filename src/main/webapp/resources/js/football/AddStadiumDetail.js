@@ -1,4 +1,4 @@
-document.addEventListener('click', function(e){
+	document.addEventListener('click', function(e){
     if(e.target.id=='AddST'){
         let hiddenBox = document.getElementById('hiddenBox');
         hiddenBox.style.display='block';
@@ -7,7 +7,6 @@ document.addEventListener('click', function(e){
         document.getElementById('fDetailFile').click();
     }
     else if(e.target.id=='addBtn'){
-        let hiddenBox = document.getElementById('hiddenBox');
 
         let Data = new FormData();
 
@@ -27,7 +26,6 @@ document.addEventListener('click', function(e){
         AddDetailStadium(Data).then(result=>{
             if(result>0){
                 window.location.reload();
-                // hiddenBox.style.display='none';
             }
         })
     }
